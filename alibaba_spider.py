@@ -1,7 +1,7 @@
 import time
 import json
 import os
-import wget
+
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
@@ -10,13 +10,6 @@ from selenium.webdriver.common.keys import Keys
 from webdriver_manager.chrome import ChromeDriverManager
 import undetected_chromedriver as uc
 
-
-def download_image(url):
-    image_name = url.split("/")[-1]
-    destination = "images/" + image_name
-    if os.path.exists(destination):
-        return True
-    wget.download(url, destination)
 
 
 def get_items(search, page, driver):
@@ -57,14 +50,8 @@ def get_items(search, page, driver):
             product_image = "http:" + product_image if product_image else None
         except:
             product_image = None
-            
-        if product_image:
-            try:
-                download_image(product_image)
-            except Exception as e:
-                print(e)
 
-        output.append({"name": name, "price": price, "MOQ":MOQ, "image": product_image, "url": product_url})
+        output.append({"name": name, "price": price, "MOQ":MOQ, "url": product_url})
 
     return output
 
@@ -79,7 +66,7 @@ chrome_options.add_argument("--disable-dev-shm-usage")
 # Initialize WebDriver
 driver = uc.Chrome(options=chrome_options)
 
-search = input("Enter Product to Search: ")
+search = "GPU"
 search_query = search.replace(" ", "_")
 
 # Find max pages dynamically
@@ -88,7 +75,7 @@ time.sleep(3)
 
 max_page = 1
 try:
-    while max_page < 1:
+    while max_page < 3:
         pagination_buttons = driver.find_elements(By.CSS_SELECTOR, ".searchx-pagination-list .pagination-item")
         if pagination_buttons:
             page_numbers = [int(btn.text) for btn in pagination_buttons if btn.text.isdigit()]
