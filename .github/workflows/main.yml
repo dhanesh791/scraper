@@ -25,7 +25,7 @@ jobs:
         run: python alibaba_spider.py
 
       - name: Run ETL Process
-        run: python etl.py
+        run: python ETL.py
 
       - name: Upload raw scraped data
         uses: actions/upload-artifact@v4  # ✅ Ensure v4 is used
