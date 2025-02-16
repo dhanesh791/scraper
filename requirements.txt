@@ -1,0 +1,1 @@
+selenium undetected-chromedriver pandas openpyxl webdriver-manager regex
