@@ -28,13 +28,13 @@ jobs:
         run: python ETL.py
 
       - name: Upload raw scraped data
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: product_json
           path: product.json
 
       - name: Upload cleaned Excel file
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: cleaned_product_xlsx
           path: cleaned_product.xlsx
