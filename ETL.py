@@ -38,8 +38,6 @@ def transform_data(data):
 
     df["Lowest Price ($)"], df["Highest Price ($)"] = zip(*df["price"].apply(process_price))
 
-    # Drop old price and empty image column
-    df.drop(columns=["price", "image"], inplace=True, errors="ignore")
 
     # Reorder columns (Lowest & Highest Price before URL)
     column_order = ["name", "Lowest Price ($)", "Highest Price ($)", "MOQ", "url"]
