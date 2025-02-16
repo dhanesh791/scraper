@@ -23,7 +23,7 @@ def transform_data(data):
     
     # Remove "Min. order:" from MOQ
     df["MOQ"] = df["MOQ"].astype(str).str.replace(r"Min\. order:\s*", "", regex=True)
-    df["MOQ"] = df["MOQ"].apply(lambda x: "0" if x.strip() == "" else x) 
+    df["MOQ"] = df["MOQ"].apply(lambda x: "1" if x.strip() == "" else x) 
 
     
     # Process price column
