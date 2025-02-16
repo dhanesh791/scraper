@@ -19,7 +19,7 @@ jobs:
           python-version: "3.9"
 
       - name: Install dependencies
-        run: pip install selenium undetected-chromedriver pandas openpyxl webdriver-manager
+        run: pip install selenium undetected-chromedriver pandas openpyxl webdriver-manager wget re
 
       - name: Run Scraper
         run: python alibaba_spider.py
