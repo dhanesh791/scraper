@@ -43,4 +43,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: cleaned_product_csv
-          path: cleaned_product.xlsx
+          path: ./cleaned_product.xlsx
